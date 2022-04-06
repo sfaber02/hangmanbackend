@@ -55,7 +55,7 @@ const getUserHighScore = async (user) => {
     }
 }
 
-
+/** checks if user exists in DB */
 const doesUserExist = async (user) => {
     try {
         const exists = await db.any (
@@ -72,7 +72,12 @@ const doesUserExist = async (user) => {
                 return error;
             }
         }
-        
+
+/**
+ * adds new user to DB
+ * @param {string} user 
+ * @returns a new user
+ */
 const addNewHighScoreUser =  async (user) => {
     try {
         const newUser = await db.any (
@@ -88,6 +93,12 @@ const addNewHighScoreUser =  async (user) => {
     }
 }
 
+/**
+ * updates an existsing users score
+ * @param {string} name 
+ * @param {number} score 
+ * @returns 
+ */
 const updateHighScore = async (name, score) => {
     try {
         const newScore = await db.any (
@@ -102,6 +113,11 @@ const updateHighScore = async (name, score) => {
     }
 }
 
+/**
+ * gets a users rank amonst all high scores
+ * @param {string} name 
+ * @returns 
+ */
 const getRanking = async (name) => {
     try {
         const ranking = (await db.any (

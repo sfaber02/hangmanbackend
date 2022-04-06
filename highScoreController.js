@@ -47,6 +47,7 @@ highScores.get('/:user', async (req, res) => {
     }
 });
 
+/** checks if user already exists */
 highScores.get('/check/:name', async (req, res) => {
     const name = req.params.name.toLowerCase();
     const exists = (await doesUserExist(name))[0].exists;
@@ -57,6 +58,7 @@ highScores.get('/check/:name', async (req, res) => {
     }
 });
 
+/** gets a users ranking amongst all high scores */
 highScores.get('/ranking/:name', async (req, res) => {
     const name = req.params.name.toLowerCase();
     const exists = (await doesUserExist(name))[0].exists;
